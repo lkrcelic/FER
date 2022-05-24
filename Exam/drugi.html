@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    /*za učitavanje datoteka categories.json i products.json potrebno je koristiti funkciju LoadData().Nije dozvoljeno pisati vlastite pozive metode fetch
+    u slučaju greške prekida se izvođenje programa, a sve greške prihvaća u jednom glavnom catch bloku, te korisniku na konzolu(console) ispisuje "An error has occured and program stopped working".
+    za svaku kategoriju koja nema pripadnih proizvoda postaviti NumProd na 0
+    u slučaju da proizvodi sadrže identifikator nepostojeće kategorije, takve proizvode ignorirati i ne uključiti u rezultat
+    ako dvije kategorije imaju isti broj proizvoda ispisati bilo koju od te dvije
+    */
+    async function LoadData(fileName) {
+        let promise = await fetch(fileName);
+        if (!promise.ok) { throw new Error("Cannot load json file"); }
+        else { return await promise.json(); }
+    }
+
+    function findMax() {
+        let categories = null;
+        let products = null;
+        let result = { name: "name", quantity: 0 };
+        let promise = LoadData("./categories.json");
+        promise.
+            then(result1 => {
+                categories = result1;
+                return LoadData("./products.json");
+            }).then(result2 => {
+                products = result2;
+            }).then(() => {
+                for (x of products) {
+                    if (x.NumProd > result.quantity) {
+                        for (y of categories)
+                            if (y.CategoryId == x.CategoryId) {
+                                result.name = y.CategoryName;
+                                result.quantity = x.NumProd;
+                                break;
+                            }
+                    }
+
+                }
+                console.log(`Category with most products: ${result.name} - ${result.quantity}`);
+            })
+            .catch(err => {
+                console.log("An error occured while loading json");
+            });
+    }
+    findMax();
+</script>
+
+<body>
+
+</body>
+
+</html>

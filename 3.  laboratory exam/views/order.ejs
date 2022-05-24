@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+
+<%- include(`partials/head`); %>
+
+    <body class="content">
+
+        <%- include(`partials/header`); %>
+
+            <main class="main">
+
+                <!-- INSERT CODE HERE -->
+                <% let counter=0; for(let category of categories) {%>
+                    <section
+                        class='<%- ((counter % 2) ?  "section primary-color-bg" : "section secondary-color-bg");%>'>
+                        <div class="centered-container">
+                            <h1 class="decorated-title font-secondary main-color">
+                                <span class="main-color-emphasized">
+                                    <%= category.name %>
+                                </span>
+                                Inventory
+                            </h1>
+                            <div class="separator"></div>
+                        </div>
+                        <% const items=inventory.filter((elem)=> {return elem.categoryid == category.id});
+                            if(items.length) { %>
+                            <div class="gallery">
+                                <% for(let item of items) {%>
+                                    <div class="photo-box" data-id="<%= item.id%>">
+                                        <img class="photo-box-image" src="<%= item.imageurl %>"></img>
+                                        <div class="photo-box-title font-secondary main-color-emphasized">
+                                            <a class="link" href="../item/<%= item.id %>">
+                                                <%= item.name%>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                            </div>
+                            <%} else {%>
+                                <div class="centered-container">
+                                    <h2 class="decorated-title font-secondary main-color">
+                                        No items in this category
+                                    </h2>
+                                </div>
+                                <%}%>
+                    </section>
+                    <% counter++;} %>
+            </main>
+
+            <%- include(`partials/footer`); %>
+
+    </body>
+
+</html>

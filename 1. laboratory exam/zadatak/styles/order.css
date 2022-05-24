@@ -1,0 +1,56 @@
+.container-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.croped-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.horizontal-center {
+  display: flex;
+  align-items: center;
+}
+
+.picture-description {
+  margin: 0 0 15px 0;
+}
+
+.separator-override {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin: 0;
+}
+
+.broder-round {
+  vertical-align: middle;
+  text-align: center;
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: #e0aacd;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+.line-through {
+  color: white;
+  text-decoration-color: #e0aacd;
+}
+.side-margin {
+  margin: 0px 5px;
+}
+
+.odredState {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0px;
+}

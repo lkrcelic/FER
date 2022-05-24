@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+
+<body>
+
+</body>
+<script>
+    let polje = [1, 2, 3, 4, 5, 6];
+    console.log(polje);
+    polje.map((elem) => {
+        let div = document.createElement('div');
+        div.style.height = "100px";
+        div.style.width = "100px";
+        div.style.backgroundColor = "red";
+        div.style.position = "relative";
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        div.style.left = (parseFloat(vw) / polje.length) * parseFloat(elem - 1) + "px"
+        div.textContent = elem;
+        document.querySelector("body").appendChild(div);
+    })
+
+</script>
+
+</html>

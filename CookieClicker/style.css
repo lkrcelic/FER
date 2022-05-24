@@ -1,0 +1,29 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #0070ff;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #0070ff;
+}
+
+.box-style {
+  background-color: #ffa500;
+  border: 3px solid #ff6b0d;
+  border-radius: 5px;
+}
+
+.cookie-image--wrapper > img {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var oldTime = null;
+    async function getData(file) {
+        let promise = await fetch(file);
+        if (!promise.ok) {
+            console.log("greška");
+        }
+        let data = await promise.json();
+        if (!data.ok) {
+            console.log("mrzim kuje 1965");
+        }
+        setTimeout(resetTime(), 5000);
+        store(data);
+    }
+    function resetTime() {
+        oldTime = new Date().getTime();
+    }
+
+    function store(data) {
+        console.log(typeof data);
+        console.log(data.drzava);
+        console.log(JSON.stringify(data));
+
+        localStorage.setItem("tecaj", JSON.stringify(data.srednji_tecaj));
+    }
+    function getTecaj() {
+        const data = localStorage.getItem("tecaj");
+        if (!data) {
+            throw new Error("Highscores not set!");
+        }
+        return JSON.parse(data);
+    }
+
+    async function calculate(e) {
+        let value = document.querySelector("input").value;
+        value = parseFloat(value);
+        if (value) {
+            let timeContorl = (new Date().getTime() - oldTime) % (1000 * 60);
+            if (timeContorl > 5000 || oldTime == null) {
+                await getData("./data.json");
+                document.querySelector("span").textContent = `Vas iznos u kn je: ${value * getTecaj()}`
+            }
+            else if (timeContorl < 5000)
+                document.querySelector("span").textContent = `Vas iznos u kn je (prije ${timeContorl}ms): ${value * getTecaj()}`
+        }
+        else {
+            document.querySelector("span").textContent = `unesite ispravan pozitivan iznos u €`
+        }
+    }
+</script>
+
+<body>
+    <div style="margin: 20px;">
+        <input type="text"></input>
+        <button onclick="calculate()">preracunaj</button>
+        <br>
+        <span></span>
+    </div>
+</body>
+
+</html>
