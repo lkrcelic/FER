@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<%- include(`partials/head`); %>
+
+    <body class="content">
+
+        <%- include(`partials/header`); %>
+
+            <main class="main">
+
+                <!-- INSERT CODE HERE -->
+
+
+
+                <div class="centered-container">
+                    <h1 class="decorated-title font-secondary main-color">Update buyer
+                        <span class="main-color-emphasized">
+                            <%= buyer.name + " " + buyer.surname%>
+                        </span>
+                    </h1>
+                    <div class="separator"></div>
+                </div>
+                <section class="section secondary-color-bg">
+                    <div class="container">
+                        <form action="/buyers/update-buyer/<%= buyer.id %>" method="POST">
+                            <fieldset class="fieldset">
+                                <div class="label-input">
+                                    <label for="buyername">Buyer name: </label>
+                                    <input type="text" name="buyername" id="buyername" size="30"
+                                        value="<%= buyer.name %>">
+                                </div>
+                                <div class="label-input">
+                                    <label for="buyersurname">Buyer surname: </label>
+                                    <input type="text" name="buyersurname" id="name" size="30"
+                                        value="<%= buyer.surname%>">
+                                </div>
+                                <div class="label-input">
+                                    <label for="country">Country: </label>
+                                    <input type="text" name="country" id="country" size="30"
+                                        value="<%= buyer.country%>">
+                                </div>
+                                <div class="label-input">
+                                    <label for="email"> E-mail: </label>
+                                    <input type="email" name="email" id="email" size="30" value="<%= buyer.email%>">
+                                </div>
+                                <div class="label-input">
+                                    <label for="PartnerSince"> Buyer since: </label>
+                                    <input type="number" name="buyersince" id="buyersince" size="20"
+                                        value="<%=buyer.buyersince%>">
+                                </div>
+                                <div class="label-input">
+                                    <label for="<%= locals.selectData.name %>">Top buyer for:</label>
+                                    <%- include(`partials/_select`); %>
+                                </div>
+                                <hr>
+                                <div class="submitButtons">
+                                    <input type="Submit" class="btn">
+                                    <input type="Reset" class="btn">
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </section>
+
+
+
+            </main>
+
+            <%- include(`partials/footer`); %>
+
+    </body>
+
+</html>

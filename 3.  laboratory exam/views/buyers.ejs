@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<%- include(`partials/head`); %>
+
+<body class="content">
+
+<%- include(`partials/header`); %>
+
+<main class="main">
+
+    <div class="centered-container">
+        <h1 class="decorated-title font-secondary main-color">Top <span class="main-color-emphasized">Buyers</span> 
+        </h1>
+        <div class="separator"></div>
+    </div>
+    <% if (buyers.length === 0) { %>
+        <div class="centered-container">
+            <h2 class="decorated-title font-secondary main-color">No top buyers. :( </h2>
+        </div>
+    <% } else { %>
+        <section class="section secondary-color-bg info_container">
+            <% for (let buyer of buyers) { %>
+                <h3 class="decorated-title font-secondary main-color-emphasized"><%= buyer.name + ' ' + buyer.surname %> 
+                </h3>
+                <div class="item-view-text-property main-color">Country: 
+                    <span class="item-view-text-value"><%= buyer.country %></span></div>
+                <div class="item-view-text-property main-color">E-mail: 
+                    <span class="item-view-text-value"><%= buyer.email %></span></div>
+                <div class="item-view-text-property main-color">Buyer since: 
+                    <span class="item-view-text-value"><%= buyer.buyersince %></span></div>
+                <hr>
+            <% } %>
+        </section>
+    <% } %>
+
+    
+
+
+</main>
+
+<%- include(`partials/footer`); %>
+
+</body>
+
+</html>
+

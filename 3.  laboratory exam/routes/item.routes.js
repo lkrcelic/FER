@@ -20,6 +20,12 @@ router.get("/:id([0-9]{1,10})", async function (req, res, next) {
   if (the_item) {
     query_result = await db.query("SELECT * FROM categories");
     let categories = query_result.rows;
+    query_result = await db.query("SELECT * FROM buyers");
+    let buyers = query_result.rows;
+
+    buyers = buyers.filter((el) => {
+      return el.buyerof == the_item.id;
+    });
 
     let category = categories.find((el) => {
       return el.id == the_item.categoryid;
@@ -30,6 +36,7 @@ router.get("/:id([0-9]{1,10})", async function (req, res, next) {
       title: the_item.name,
       product: the_item,
       category: category,
+      buyers: buyers,
     });
   } else {
     res.status(404).send("Wrong id?");
