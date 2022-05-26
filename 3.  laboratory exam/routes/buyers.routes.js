@@ -80,8 +80,8 @@ router.post(
         await db.query(
           "update buyers set name = $1, surname = $2, country = $3, email = $4, buyerSince = $5, buyerOf = $6 where id = $7",
           [
-            req.body.name,
-            req.body.surname,
+            req.body.buyername,
+            req.body.buyersurname,
             req.body.country,
             req.body.email,
             req.body.buyersince,
@@ -92,6 +92,9 @@ router.post(
 
         res.redirect(`/item/${id}`);
       } catch (error) {
+        console.log(
+          "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+        );
         res.render("error", {
           title: "Update buyer",
           linkActive: "Buyers",
