@@ -2,7 +2,7 @@
     <select id="<%-selectData.id%>" <%-selectData.name ? 'name="' + selectData.name + '"' : '' %>
         <%- selectData.attributes ? selectData.attributes : '' %> >
             <% selectData.list.forEach(function(item) { %>
-                <option <%- (item.value==itemID) ? "selected" : "" %> value=" <%= item.id%> "> <%= item.name%>
+                <option <%- (item.id==itemID) ? "selected" : "" %> value=" <%= item.id%> "> <%= item.name%>
                 </option>
                 <% }); %>
-    </select>cd
+    </select>

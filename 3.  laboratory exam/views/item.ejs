@@ -55,7 +55,7 @@
                             <section class="section secondary-color-bg info_container">
                                 <% for (let buyer of buyers) { %>
                                     <h3 class="decorated-title font-secondary main-color-emphasized">
-                                        <%= buyer.name %>
+                                        <%= buyer.name + ' ' + buyer.surname %>
                                             <a href="../buyers/update-buyer/<%= buyer.id%>">
                                                 <img class="icon_crud" src="/images/pencil.png">
                                             </a>

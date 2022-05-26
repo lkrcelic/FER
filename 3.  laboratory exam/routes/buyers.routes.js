@@ -42,7 +42,7 @@ router.get("/update-buyer/:id([0-9]{1,10})", async function (req, res, next) {
     linkActive: "Buyers", //za boldanje linka
     title: "Update buyer", //naslov za tab u chromu
     buyer: buyer,
-    itemID: id,
+    itemID: buyer.buyerof,
   });
 });
 
@@ -90,7 +90,7 @@ router.post(
           ]
         );
 
-        res.redirect(`/item/${id}`);
+        res.redirect(`/item/${req.body.product_list}`);
       } catch (error) {
         console.log(
           "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
