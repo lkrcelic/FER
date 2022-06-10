@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Helper = require("./helpers/helper");
+const proba = require("./helpers/auth-handler");
 
-router.get("/", function (req, res, next) {
+router.get("/", proba, function (req, res, next) {
   res.render("view", {
     title: "Newsletter subscription",
     linkActive: "cart",
