@@ -7,19 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        @media screen and (min-width: 500px) {
-            .veliki {
-                display: none;
-            }
-
-            .mali {
-                display: block;
-            }
-        }
-
         .mali,
         .veliki {
-            display: flex;
             border: 1px solid green;
             padding: 10px;
             height: 50px;
@@ -27,26 +16,49 @@
 
         .veliki {
             display: block;
+
+
         }
 
-        .veliki span,
-        .mali span {
+        .span {
+            float: left;
+        }
+
+        .a {
+            display: block;
+            margin: 0 5px;
+
+        }
+
+        ul {
+            display: inline;
+            float: right;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
             display: inline-block;
-            text-align: start;
+            align-self: flex-start;
+
         }
 
-        .veliki a,
-        .mali a {
-            display: inline-block;
-            align-self: flex-end;
-        }
-
-        .veliki a:hover {
+        a:hover {
             background-color: aqua;
         }
 
         .mali {
             display: none;
+        }
+
+        @media only screen and (max-width: 500px) {
+            .mali {
+                display: block;
+            }
+
+            .veliki {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -55,10 +67,11 @@
     <div class="veliki">
 
         <span>Pero Perić</span>
-
-        <a href="">Link 1</a>
-        <a href="">Link 2</a>
-        <a href="">Link 3</a>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
     </div>
     <div class="mali">
         <span>P.P.</span>

@@ -18,6 +18,7 @@ const signupRoute = require("./routes/signup.routes");
 const cartRoute = require("./routes/cart.routes");
 const userRoute = require("./routes/user.routes");
 const checkoutRoute = require("./routes/checkout.routes");
+
 //lab4 extra route
 const onsiteRoute = require("./routes/on-site.routes");
 
@@ -60,6 +61,7 @@ app.use((req, res, next) => {
 console.log(
   "TU SAM *********************************************************************"
 );
+
 //definicija ruta
 app.use("/", homeRouter);
 app.use("/order", orderRouter);
