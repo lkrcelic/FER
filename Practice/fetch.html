@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    async function getJson() {
+        let promise = await fetch("");
+        let data = await promise.json();
+        //data = data.slice(0, 10);
+        console.log(data);
+    }
+
+
+    function promiseAll() {
+        Promise.all([
+            fetch("https://jsonplaceholder.typicode.com/users"),
+            fetch("https://jsonplaceholder.typicode.com/users")
+        ]).then(results => { // (*)
+            results.forEach(async function (result) {
+                if (!result.ok) {
+                    throw new Error("Cannot load json file");
+                }
+                let jsonContents = await result.json();
+                for (elem of jsonContents) {
+                    console.log(elem.name + " " + elem.phone);
+                }
+                console.log("");
+            });
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+    function promise() {
+        promise = new Promise(function (resolve, reject) {
+            let randomNumber = Math.floor(Math.random() * 10);
+            console.log(randomNumber);
+            if (randomNumber % 2 == 1) {
+                setTimeout(() => {
+                    resolve("An odd random number was generated.");
+                }, 5000);
+            }
+            else {
+                setTimeout(() => {
+                    reject(new Error("This is generated from the promise executor!"));
+                }, 1000);
+            }
+        });
+        promise.catch(
+            function (error) {
+                return new Promise(function (resolve, reject) {
+                    reject(error);
+                });
+            })
+            .then(
+                function (result) { console.log("Resolve:" + result) },
+                function (result) { console.log("Reject:" + result) }
+            );
+    }
+    /*FETCH*/
+    function fetchPromise() {
+        let promise2 = fetch("s12.promise.json");
+        promise2
+            .then(
+                function (response) {
+                    if (!response.ok) { throw new Error("Cannot load json file"); }
+                    else { return response.json(); }
+                },
+                function (error) { throw error; }
+            )
+            .then(jsonContents => {
+                let spanElement = document.createElement('pre');
+                spanElement.innerHTML = JSON.stringify(jsonContents);
+                document.body.appendChild(spanElement);
+            })
+            .catch(err => {
+                console.log("An error occured while loading json");
+            });
+    }
+</script>
+
+<body>
+    <button onclick="getJson()">Click me!</button>
+</body>
+
+</html>

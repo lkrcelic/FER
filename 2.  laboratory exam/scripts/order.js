@@ -34,6 +34,7 @@ async function filterItems() {
 }
 
 ////LABOS
+
 function addToCart(id) {
   // INSERT CODE HERE --> PRIPREMA
   if (localStorage.getItem("cart") == null) {

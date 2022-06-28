@@ -2,7 +2,7 @@
 const db = require("../db"); //dodaj bazu podataka
 var express = require("express");
 var router = express.Router();
-const { check, body, validationResult } = require("express-validator");
+const { check, body, validationResult } = require("express-validator"); // za validaciju
 
 router.get("/", async function (req, res, next) {
   let buyers, query_result;

@@ -9,29 +9,26 @@
 </head>
 <script>
     var oldTime = null;
+
     async function getData(file) {
         let promise = await fetch(file);
         if (!promise.ok) {
             console.log("greška");
         }
         let data = await promise.json();
-        if (!data.ok) {
-            console.log("mrzim kuje 1965");
-        }
         setTimeout(resetTime(), 5000);
         store(data);
     }
+
     function resetTime() {
         oldTime = new Date().getTime();
     }
 
     function store(data) {
-        console.log(typeof data);
-        console.log(data.drzava);
         console.log(JSON.stringify(data));
-
         localStorage.setItem("tecaj", JSON.stringify(data.srednji_tecaj));
     }
+
     function getTecaj() {
         const data = localStorage.getItem("tecaj");
         if (!data) {

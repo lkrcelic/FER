@@ -1,6 +1,6 @@
 function refreshCartItems() {
   // INSERT CODE HERE --> PRIPREMA
-  if (localStorage.getItem("cart") != null) {
+  if (localStorage.getItem("count") != null) {
     let cartItems = document.querySelector("#cart-items");
 
     let pom = JSON.parse(localStorage.count);

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #form {
+        width: 600px;
+        margin: auto;
+    }
+
+    .form-legend {
+        text-align: center;
+    }
+
+    .form-group {
+        margin: 12px 0px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 2px;
+    }
+
+    .form-text-input {
+        box-sizing: border-box;
+        display: block;
+        width: 80%;
+    }
+
+    .form-select {
+        width: 90px;
+        padding-left: 2px;
+    }
+
+    .form-radio-label {
+        display: inline-block;
+        margin-right: 5px;
+    }
+</style>
+
+<body>
+
+    <form id="form" action="/action_page.php">
+        <fieldset>
+            <legend class="form-legend">Log in form</legend>
+            <div class="form-group">
+                <label class="form-label" for="fname">First name: </label>
+                <input class="form-text-input" type="text" for="fname" id="fname" name="fname" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="fname">Last name: </label>
+                <input class="form-text-input" type="text" for="fname" id="fname" name="lname" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="country">Chose country: </label>
+                <select class="form-select" id="country" name="country" required>
+                    <option selected value="" disabled hidden></option>
+                    <option value="CRO">CRO</option>
+                    <option value="SLO">SLO</option>
+                    <option value="HUN">HUN</option>
+                    <option value="GER">GER</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Please confirm to continue: </label>
+
+                <input class="form-radio-input" type="radio" id="remeber_me" name="remember_me" value="true">
+                <label class="form-radio-label" for="remeber_me">Yes</label>
+                <input class="form-radio-input" type="radio" id="remeber_me" name="remember_me" value="false">
+                <label class="form-radio-label" for="remeber_me">No</label>
+                <input class="form-radio-input" type="radio" id="remeber_me" name="remember_me" value="other">
+                <label class="form-radio-label" for="remeber_me">Other</label>
+            </div>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+</body>
+
+</html>
